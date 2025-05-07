@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}URL Parameters{% endblock %}
+
+{% block content %}
+<h1>URL Parameters</h1>
+{% if params %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Parameter</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in params.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No URL parameters provided.</p>
+{% endif %}
+
+<p class="mt-3">
+    Try adding parameters to the URL like: 
+    <code>/url_params?param1=value1&param2=value2</code>
+</p>
+{% endblock %} 

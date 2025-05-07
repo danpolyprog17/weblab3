@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Cookies{% endblock %}
+
+{% block content %}
+<h1>Cookies</h1>
+{% if cookies %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cookie</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for key, value in cookies.items() %}
+            <tr>
+                <td>{{ key }}</td>
+                <td>{{ value }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No cookies found.</p>
+{% endif %}
+
+<div class="alert alert-info mt-3">
+    <p>Special cookie status: 
+        {% if 'special_cookie' in cookies %}
+            <span class="text-success">Present</span> (will be deleted on next visit)
+        {% else %}
+            <span class="text-warning">Not present</span> (will be set on next visit)
+        {% endif %}
+    </p>
+</div>
+{% endblock %} 
